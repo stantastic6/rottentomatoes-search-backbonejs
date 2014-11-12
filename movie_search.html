@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Search</title>
+
+</head>
+<body>
+  <h4 class="text-center">Rotten Tomatoes Movie Search</h4>
+  <br>
+  <div class="row">
+    <form class="search-form">  
+    <div class="small-4 small-offset-4 columns">
+      <input type="text" placeholder="Enter a movie tite" id="movie">
+    </div>
+    <div class="small-4 columns">  
+      <input type="submit" class="button tiny round" value="Search">
+    </div>
+    </form>
+  </div><br><br><br>
+
+  <div class="row">
+    <div id="movie-list"></div>
+  </div>
+  
+  <script type="text/handlebars" id="movie-template">
+    <div class="movies">
+      <ul class="pricing-table">
+        <li class="title">{{title}}</li>
+        <li class="price"><img src="{{posters.thumbnail}}" width="100"></li>
+        {{#if runtime}}
+        <li class="description">Runtime: {{runtime}}</li>
+        {{else}}
+        <li class="description">Runtime unavailable</li>
+        {{/if}}
+        {{#if synopsis}}
+        <li class="description">{{synopsis}}</li>
+        {{else}}
+        <li class="description">Synopsis unavailable</li>
+        {{/if}}
+        <li class="bullet-item">
+          <strong>Score:</strong></br>
+          Audience Rating: {{ratings.audience_rating}}<br>
+          Audience Score: {{ratings.audience_score}}
+        </li>
+        <li class="bullet-item">
+          <ul><strong>Cast:</strong><br>
+          {{#each abridged_cast}}
+            <li>{{name}}</li>
+          {{/each}}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </script>
+
+
+
+  <script src="js/lib/handlebars-v2.0.0.js"></script>
+  <script src="js/lib/jquery-2.1.1.js"></script>
+  <script src="js/lib/underscore.js"></script>
+  <script src="js/lib/backbone.js"></script>
+  <script src="js/movie_search.js"></script>
+   <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.3/js/foundation.min.js"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.3/css/foundation.min.css">
+  
+</body>
+</html>
